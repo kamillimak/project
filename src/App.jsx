@@ -1,47 +1,35 @@
 import React from 'react';
-import { Container, Box } from '@mui/material';
-import { motion } from 'framer-motion';
+import { Routes, Route } from 'react-router-dom';
 
 // Import components
 import Header from './components/Header';
-import Summary from './components/Summary';
-import Skills from './components/Skills';
-import Experience from './components/Experience';
-import Education from './components/Education';
-import Hobby from './components/Hobby';
+import HomePage from './pages/HomePage';
+import Changelog from './pages/Changelog';
+import Projects from './pages/Projects';
+import Prototypes from './pages/Prototypes';
+import Prototype1 from './pages/Prototype1';
+import Prototype2 from './pages/Prototype2';
+import Prototype3 from './pages/Prototype3';
+import Design from './pages/Design';
+import Images from './pages/Images';
+import Videos from './pages/Videos';
 
 const App = () => {
-    const sectionVariants = {
-        hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
-    };
-
-    const Section = ({ children }) => (
-        <Box my={4}>
-            <motion.div
-                variants={sectionVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-            >
-                {children}
-            </motion.div>
-        </Box>
-    );
-
-
     return (
         <>
             <Header />
-            <Container maxWidth="lg">
-                <main>
-                    <Section><Summary /></Section>
-                    <Section><Skills /></Section>
-                    <Section><Experience /></Section>
-                    <Section><Education /></Section>
-                    <Section><Hobby /></Section>
-                </main>
-            </Container>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/changelog" element={<Changelog />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/prototypes" element={<Prototypes />} />
+                <Route path="/prototypes/1" element={<Prototype1 />} />
+                <Route path="/prototypes/2" element={<Prototype2 />} />
+                <Route path="/prototypes/3" element={<Prototype3 />} />
+                <Route path="/design" element={<Design />} />
+                <Route path="/design/images" element={<Images />} />
+                <Route path="/design/videos" element={<Videos />} />
+            </Routes>
         </>
     );
 }
